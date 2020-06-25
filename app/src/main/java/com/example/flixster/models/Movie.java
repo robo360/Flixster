@@ -51,7 +51,7 @@ public class Movie {
     }
 
     public String getBackDropPath() {
-        return backDropPath;
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backDropPath);
     }
     public double getVoteAverage() {
         if (voteAverage > 0){voteAverage = voteAverage / 2.0f;}
