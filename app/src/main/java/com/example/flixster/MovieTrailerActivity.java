@@ -27,17 +27,16 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
     String apiKey;
     String TAG = "MovieTrailerActivity";
     String videoId;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_trailer);
-        // set up an a url
-        movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
-        apiKey = getString(R.string.movies_api_key);
-        String url = String.format("https://api.themoviedb.org/3/movie/%d/videos?api_key=%s&language=en-US", movie.getId(), apiKey);
 
         // make a request to get the movie video id
+        apiKey = getString(R.string.movies_api_key);
+        url = String.format("https://api.themoviedb.org/3/movie/%d/videos?api_key=%s&language=en-US", movie.getId(), apiKey);
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new JsonHttpResponseHandler() {
                     @Override

@@ -85,10 +85,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             String imageUrl;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageUrl = movie.getBackDropPath();
+                Glide.with(context).load(imageUrl).placeholder(R.drawable.flicks_backdrop_placeholder).transform(new RoundedCornersTransformation(120, 0)).into(ivPoster);
             } else {
                 imageUrl = movie.getPosterPath();
+                Glide.with(context).load(imageUrl).placeholder(R.drawable.flicks_movie_placeholder).transform(new RoundedCornersTransformation(120, 0)).into(ivPoster);
             }
-            Glide.with(context).load(imageUrl).transform(new RoundedCornersTransformation(120, 0)).into(ivPoster);
+
         }
 
         @Override
@@ -100,7 +102,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                 // get the movie at the position, this won't work if the class is static
                 Movie movie = movies.get(position);
                 // create intent for the new activity
-                Intent intent = new Intent(context, MovieTrailerActivity.class);
+                Intent intent = new Intent(context, MovieDetailActivity.class);
                 // serialize the movie using parceler, use its short name as a key
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
                 // show the activity
