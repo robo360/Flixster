@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixster.databinding.ActivityMainBinding;
+import com.example.flixster.databinding.ActivityMovieDetail2Binding;
 import com.example.flixster.models.Movie;
 
 import org.json.JSONArray;
@@ -40,19 +42,23 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
     String videoId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
+        ActivityMovieDetail2Binding binding = ActivityMovieDetail2Binding.inflate(getLayoutInflater());
         //declare views
         RatingBar rbVoteAverage;
         TextView tvOverView;
         TextView tvTitle;
+        TextView tvRelease;
+        TextView tvPop;
 
         //locate views
-        setContentView(R.layout.activity_movie_detail2);
-        rbVoteAverage = findViewById(R.id.rbVoteAverage);
-        tvOverView = findViewById(R.id.tvOverview);
-        tvTitle = findViewById(R.id.tvTitle);
+        setContentView(binding.getRoot());
+        rbVoteAverage = binding.rbVoteAverage;
+        tvOverView = binding.tvOverview;
+        tvTitle = binding.tvTitle;
+        tvRelease = binding.tvRelease;
+        tvPop = binding.tvPop;
+
 
         //unwrap the parceled movie passed using intent
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
@@ -61,8 +67,10 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
         //fill the views with data
         float VoteAverage = (float) movie.getVoteAverage();
         rbVoteAverage.setRating(VoteAverage);
-        tvOverView.setText(movie.getOverview());
+        tvOverView.setText("Movie Description \n \n" + movie.getOverview());
         tvTitle.setText(movie.getTitle());
+        tvRelease.setText("Release Date: "+ movie.getReleaseDate());
+        tvPop.setText("Population: " + movie.getPopularity());
 
         // request and post video from YouTube API.
         apiKey = getString(R.string.movies_api_key);

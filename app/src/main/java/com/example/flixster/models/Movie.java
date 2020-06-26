@@ -16,6 +16,8 @@ public class Movie {
     String overview;
     String backDropPath;
     Double voteAverage;
+    Double popularity;
+    String releaseDate;
     int id;
 
     // used by parceled
@@ -28,6 +30,9 @@ public class Movie {
         backDropPath = jsonObject.getString("backdrop_path");
         voteAverage = jsonObject.getDouble("vote_average");
         id = jsonObject.getInt("id");
+        popularity = jsonObject.getDouble("popularity");
+        releaseDate = jsonObject.getString("release_date");
+
     }
 
 
@@ -62,6 +67,13 @@ public class Movie {
     }
     public int getId() {
         return id;
+    }
+    public Double getPopularity() {
+        return popularity;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
 }
