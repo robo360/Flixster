@@ -15,13 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.MovieDetailActivity;
+import com.example.flixster.MovieTrailerActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
@@ -83,9 +88,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             } else {
                 imageUrl = movie.getPosterPath();
             }
-            Glide.with(context).load(imageUrl).into(ivPoster);
-
-
+            Glide.with(context).load(imageUrl).transform(new RoundedCornersTransformation(120, 0)).into(ivPoster);
         }
 
         @Override
@@ -97,7 +100,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                 // get the movie at the position, this won't work if the class is static
                 Movie movie = movies.get(position);
                 // create intent for the new activity
-                Intent intent = new Intent(context, MovieDetailActivity.class);
+                Intent intent = new Intent(context, MovieTrailerActivity.class);
                 // serialize the movie using parceler, use its short name as a key
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
                 // show the activity

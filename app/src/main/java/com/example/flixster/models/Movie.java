@@ -16,6 +16,7 @@ public class Movie {
     String overview;
     String backDropPath;
     Double voteAverage;
+    int id;
 
     // used by parceled
     public Movie() {}
@@ -26,7 +27,9 @@ public class Movie {
         overview = jsonObject.getString("overview");
         backDropPath = jsonObject.getString("backdrop_path");
         voteAverage = jsonObject.getDouble("vote_average");
+        id = jsonObject.getInt("id");
     }
+
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
         List<Movie> movies = new ArrayList<>();
@@ -56,6 +59,9 @@ public class Movie {
     public double getVoteAverage() {
         if (voteAverage > 0){voteAverage = voteAverage / 2.0f;}
         return voteAverage;
+    }
+    public int getId() {
+        return id;
     }
 
 }

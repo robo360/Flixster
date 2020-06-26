@@ -18,6 +18,8 @@ import org.w3c.dom.Text;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 
 public class MovieDetailActivity extends AppCompatActivity {
     Movie movie;
@@ -41,6 +43,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         rbVoteAverage.setRating(VoteAverage);
         tvOverView.setText(movie.getOverview());
         tvTitle.setText(movie.getTitle());
+
         Glide.with(context).load(movie.getBackDropPath()).into(ivPoster);
     }
 }
