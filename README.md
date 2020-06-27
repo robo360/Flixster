@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-# Version I
+# Version I(branch: master) 
 <img src='https://i.ibb.co/vVDhn90/walkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> 
 
 # Version II(branch: develop)
