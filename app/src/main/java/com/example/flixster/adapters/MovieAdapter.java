@@ -7,18 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.MovieDetailActivity;
-import com.example.flixster.MovieTrailerActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
@@ -70,13 +67,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         ImageView ivPoster;
         TextView tvTitle;
         TextView tvOverview;
+        Button BtnMore;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            BtnMore = itemView.findViewById(R.id.btnMore);
+            BtnMore.setOnClickListener(this);
             itemView.setOnClickListener(this);
+
         }
 
         public void bind(Movie movie) {
@@ -85,10 +86,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             String imageUrl;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageUrl = movie.getBackDropPath();
-                Glide.with(context).load(imageUrl).placeholder(R.drawable.flicks_backdrop_placeholder).transform(new RoundedCornersTransformation(120, 0)).into(ivPoster);
+                Glide.with(context).load(imageUrl).placeholder(R.drawable.flicks_backdrop_placeholder).transform(new RoundedCornersTransformation(40, 0)).into(ivPoster);
             } else {
                 imageUrl = movie.getPosterPath();
-                Glide.with(context).load(imageUrl).placeholder(R.drawable.flicks_movie_placeholder).transform(new RoundedCornersTransformation(120, 0)).into(ivPoster);
+                Glide.with(context).load(imageUrl).placeholder(R.drawable.flicks_movie_placeholder).transform(new RoundedCornersTransformation(40, 0)).into(ivPoster);
             }
 
         }

@@ -1,35 +1,25 @@
 package com.example.flixster;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.example.flixster.databinding.ActivityMainBinding;
 import com.example.flixster.databinding.ActivityMovieDetail2Binding;
 import com.example.flixster.models.Movie;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.parceler.Parcels;
-import org.w3c.dom.Text;
-
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.parceler.Parcels;
+
 import okhttp3.Headers;
 
 
@@ -49,7 +39,6 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
         TextView tvOverView;
         TextView tvTitle;
         TextView tvRelease;
-        TextView tvPop;
 
         //locate views
         setContentView(binding.getRoot());
@@ -57,7 +46,7 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
         tvOverView = binding.tvOverview;
         tvTitle = binding.tvTitle;
         tvRelease = binding.tvRelease;
-        tvPop = binding.tvPop;
+
 
 
         //unwrap the parceled movie passed using intent
@@ -69,8 +58,7 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
         rbVoteAverage.setRating(VoteAverage);
         tvOverView.setText("Movie Description \n \n" + movie.getOverview());
         tvTitle.setText(movie.getTitle());
-        tvRelease.setText("Release Date: "+ movie.getReleaseDate());
-        tvPop.setText("Population: " + movie.getPopularity());
+        tvRelease.setText(movie.getReleaseDate());
 
         // request and post video from YouTube API.
         apiKey = getString(R.string.movies_api_key);
