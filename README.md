@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 # Version I(branch: master) 
-<img src='https://i.ibb.co/vVDhn90/walkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> 
+<img src='https://i.imgur.com/aAuy2l5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> 
 
 # Version II(branch: develop)
 <img src='https://i.imgur.com/ZQFIxPc.gif' title='Video Walkthrough2' width='' alt='Video Walkthrough' />
